@@ -8,30 +8,21 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
+
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import LoginScreen from "./screens/LoginScreen";
 
-const App: () => React$Node = () => {
+
+
+
+const App = () => {
   return (
     <>
-    <View style={styles.View}>
-      <Text style={styles.text}>
-        Hello World
-      </Text>
-    </View>
+  <LoginScreen />
     </>
   );
 };
