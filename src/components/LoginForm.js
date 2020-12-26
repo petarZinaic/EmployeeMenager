@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextInput, TouchableOpacity, View, Text } from "react-native";
 import { windowWidth, windowHeight } from "../utils/Dimensions";
+import firebase from "firebase";
 
 
 const LoginForm = () => {
@@ -8,6 +9,18 @@ const LoginForm = () => {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [error, setError] = useState('');
+const [loading, setLoading] = useState(false);
+
+onButtonPress = () => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(onLoginSuccess)
+    .catch(e => {e})
+}
+
+const onLoginSuccess = () => {
+    setError(''),
+    setLoading(false)
+}
 
 return(
     <View style={styles.container}>
@@ -24,7 +37,10 @@ return(
            onChangeText={password => setPassword(password)}
            />
 
-           <TouchableOpacity style={styles.button}>
+           <TouchableOpacity
+           onPress={onButtonPress}
+            style={styles.button}
+            >
                <Text style={styles.buttonText}>Login</Text>
            </TouchableOpacity>
 
