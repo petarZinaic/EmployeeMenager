@@ -1,5 +1,5 @@
 {
-  "name": "EmployeeMenager",
+  "name": "employeemenager",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -26,5 +26,17 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petarZinaic/EmployeeMenager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petarZinaic/EmployeeMenager/issues"
+  },
+  "homepage": "https://github.com/petarZinaic/EmployeeMenager#readme",
+  "description": ""
 }
