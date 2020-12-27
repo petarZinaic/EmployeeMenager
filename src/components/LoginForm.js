@@ -32,6 +32,7 @@ return(
              /> 
         <TextInput
          underlineColorAndroid="transparent"
+         secureTextEntry={true}
           style={styles.input}
            placeholder="password"
            onChangeText={password => setPassword(password)}
