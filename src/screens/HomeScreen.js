@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 import firebase from 'firebase';
+import ListScreen from "./ListScreen";
+import { OpenListContext } from "../context/OpenListContext";
 
-const HomeScreen = () => {
-  return (
-    <View style={styles.container}>
+const HomeScreen = (props) => {
+  const {isListOpen, setIsListOpen} = useContext(OpenListContext);
+
+  const renderContent = () => {
+
+    switch(isListOpen) {
+      case true: 
+      return <ListScreen />
+      case false:
+        return(
+<View style={styles.container}>
       <View style={styles.topContainer}>
         <Image
           source={require('../assets/icons/flame-logo.png')}
@@ -15,7 +25,9 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.bottomContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button}
+        onPress={() => setIsListOpen(true)}
+        >
           <Text style={styles.buttonText}>Employee List</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -25,6 +37,15 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
     </View>
+        )
+    }
+  }
+
+  return (
+    <>
+    {renderContent()}
+    </>
+
   );
 };
 

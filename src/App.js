@@ -10,11 +10,12 @@ import HomeScreen from './screens/HomeScreen';
 
 import LoginScreen from "./screens/LoginScreen";
 import Loading from "./components/Loading";
+import {OpenListContextProvider} from "./context/OpenListContext";
 
 
 
 
-const App = () => {
+const App = (props) => {
 
 const [isLoaded, setIsLoaded] = useState(null);
 
@@ -58,9 +59,9 @@ const renderContent = () => {
 }
 
   return (
-    <>
+    <OpenListContextProvider>
   {renderContent()}
-    </>
+    </OpenListContextProvider>
   );
 };
 
