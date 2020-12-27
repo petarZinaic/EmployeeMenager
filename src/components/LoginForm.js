@@ -11,16 +11,20 @@ const [password, setPassword] = useState('');
 const [error, setError] = useState('');
 const [loading, setLoading] = useState(false);
 
-onButtonPress = () => {
+const onButtonPress = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(onLoginSuccess)
-    .catch(e => {e})
+    .then(onLogginSuccess)
+    .catch(e => {
+        setError(e.message);
+    })
 }
 
-const onLoginSuccess = () => {
+const onLogginSuccess = () => {
     setError(''),
     setLoading(false)
+    
 }
+
 
 return(
     <View style={styles.container}>

@@ -9,6 +9,7 @@ import {
 import HomeScreen from './screens/HomeScreen';
 
 import LoginScreen from "./screens/LoginScreen";
+import Loading from "./components/Loading";
 
 
 
@@ -50,6 +51,9 @@ const renderContent = () => {
       return <HomeScreen />
     case false:
       return <LoginScreen />  
+
+      default: 
+      return <Loading />
   }
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import firebase from "firebase";
 
 const HomeScreen = () => {
 
@@ -7,7 +8,10 @@ const HomeScreen = () => {
         <View style={styles.container}>
             <Text>Home Screen</Text>
 
-            <TouchableOpacity style={styles.logoutButton}>
+            <TouchableOpacity
+             style={styles.logoutButton}
+             onPress={() => firebase.auth().signOut()}
+             >
                 <Text>Logout</Text>
             </TouchableOpacity>
         </View>
