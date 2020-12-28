@@ -10,7 +10,7 @@ import HomeScreen from './screens/HomeScreen';
 
 import LoginScreen from "./screens/LoginScreen";
 import Loading from "./components/Loading";
-import {OpenListContextProvider} from "./context/OpenListContext";
+import {OpenScreenContextProvider} from "./context/OpenScreenContext";
 
 
 
@@ -23,6 +23,7 @@ useEffect(() => {
   let firebaseConfig = {
     apiKey: "AIzaSyCQBl6gmY1YjIw4vvLpd-2edWKq-3UxxXA",
     authDomain: "employeemanager-88cc7.firebaseapp.com",
+    databaseURL: "https://employeemanager-88cc7-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "employeemanager-88cc7",
     storageBucket: "employeemanager-88cc7.appspot.com",
     messagingSenderId: "328138051772",
@@ -40,6 +41,8 @@ useEffect(() => {
         setIsLoaded(false)
       }
     })
+
+    firebase.database().ref()
 
 
   }
@@ -59,9 +62,9 @@ const renderContent = () => {
 }
 
   return (
-    <OpenListContextProvider>
+    <OpenScreenContextProvider>
   {renderContent()}
-    </OpenListContextProvider>
+    </OpenScreenContextProvider>
   );
 };
 

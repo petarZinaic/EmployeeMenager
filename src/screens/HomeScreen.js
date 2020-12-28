@@ -1,52 +1,49 @@
-import React, { useState, useContext } from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 import firebase from 'firebase';
-import ListScreen from "./ListScreen";
-import { OpenListContext } from "../context/OpenListContext";
+import ListScreen from './ListScreen';
+import {OpenScreenContext} from '../context/OpenScreenContext';
 
 const HomeScreen = (props) => {
-  const {isListOpen, setIsListOpen} = useContext(OpenListContext);
+  const {isListOpen, setIsListOpen} = useContext(OpenScreenContext);
+  
 
   const renderContent = () => {
-
-    switch(isListOpen) {
-      case true: 
-      return <ListScreen />
+    switch (isListOpen) {
+      case true:
+        return <ListScreen />;
       case false:
-        return(
-<View style={styles.container}>
-      <View style={styles.topContainer}>
-        <Image
-          source={require('../assets/icons/flame-logo.png')}
-          style={styles.logo}
-        />
-        <Text style={styles.text}>Welcome to {'\n'} Employee Manager</Text>
-      </View>
+        return (
+          <View style={styles.container}>
+            <View style={styles.topContainer}>
+              <Image
+                source={require('../assets/icons/flame-logo.png')}
+                style={styles.logo}
+              />
+              <Text style={styles.text}>
+                Welcome to {'\n'} Employee Manager
+              </Text>
+            </View>
 
-      <View style={styles.bottomContainer}>
-        <TouchableOpacity style={styles.button}
-        onPress={() => setIsListOpen(true)}
-        >
-          <Text style={styles.buttonText}>Employee List</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => firebase.auth().signOut()}>
-          <Text style={styles.buttonText}>Logout</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-        )
+            <View style={styles.bottomContainer}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => setIsListOpen(true)}>
+                <Text style={styles.buttonText}>Employee List</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => firebase.auth().signOut()}>
+                <Text style={styles.buttonText}>Logout</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
     }
-  }
+  };
 
-  return (
-    <>
-    {renderContent()}
-    </>
-
-  );
+  return <>{renderContent()}</>;
 };
 
 const styles = StyleSheet.create({
