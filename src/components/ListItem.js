@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         width: windowWidth / 1.5,
         height: windowHeight / 6,
         alignItems: 'center',
-        paddingTop: 2
+        paddingTop: 2,
+        marginTop: 15
       },
       deleteButton: {
           backgroundColor: '#cc0000',
@@ -34,10 +35,12 @@ const styles = StyleSheet.create({
           height: 30,
           borderRadius: 3,
           alignItems: 'center',
-          justifyContent: 'center'         
+          justifyContent: 'center',
+          marginTop: 12         
       },
       deleteButtonText: {
-          color: 'white'
+          color: 'white',
+          
       }
 })
 

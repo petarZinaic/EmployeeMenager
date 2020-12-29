@@ -13,7 +13,7 @@ const [loading, setLoading] = useState(false);
 
 const onButtonPress = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(onLogginSuccess)
+    .then((res) => {console.log(res); onLogginSuccess})
     .catch(e => {
         setError(e.message);
     })

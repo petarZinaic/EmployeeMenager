@@ -42,6 +42,12 @@ const ListScreen = () => {
           position={employees[0].position}
           seniority={employees[0].seniority}
         />
+         <ListItem
+              name={employees[1].name}
+              age={employees[1].age}
+              position={employees[1].position}
+              seniority={employees[1].seniority}
+            />
       </View>
 
       <View style={styles.buttonContainer}>
