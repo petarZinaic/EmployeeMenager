@@ -95,7 +95,7 @@ const styles = {
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 3,
+        borderRadius: 10
     },
     buttonText: {
         fontSize: 18,

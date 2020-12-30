@@ -1,12 +1,23 @@
 import React, {useContext} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  Picker
+} from 'react-native';
+// import { Picker } from "react-native-community/picker";
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 import {OpenScreenContext} from '../context/OpenScreenContext';
 import ListItem from '../components/ListItem';
+import AddScreen from "./AddScreen";
+
 
 const ListScreen = () => {
   const {isListOpen, setIsListOpen} = useContext(OpenScreenContext);
-  const {isAddScreenOpen, setIsAddScreenOpen} = useContext(OpenScreenContext)
+  const {isAddScreenOpen, setIsAddScreenOpen} = useContext(OpenScreenContext);
 
   let employees = [
     {
@@ -30,25 +41,32 @@ const ListScreen = () => {
       position: 'backend',
       seniority: 'senior',
     },
+   
+   
+    
   ];
+
+  
 
   return (
     <View style={styles.container}>
-      <View style={styles.listContainer}>
+     
+      
+      
+      <ScrollView contentContainerStyle={styles.listContainer}>
         <Text style={styles.headingText}>Employee List</Text>
-        <ListItem
-          name={employees[0].name}
-          age={employees[0].age}
-          position={employees[0].position}
-          seniority={employees[0].seniority}
-        />
-         <ListItem
-              name={employees[1].name}
-              age={employees[1].age}
-              position={employees[1].position}
-              seniority={employees[1].seniority}
+        {employees.map((employee, index) => {
+          return (
+            <ListItem
+              key={index}
+              name={employee.name}
+              age={employee.age}
+              position={employee.position}
+              seniority={employee.seniority}
             />
-      </View>
+          );
+        })}
+      </ScrollView>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
@@ -59,7 +77,7 @@ const ListScreen = () => {
         <TouchableOpacity
           onPress={() => setIsListOpen(false)}
           style={styles.addButton}>
-          <Text style={styles.buttonText}>Add</Text>
+          <Text style={styles.buttonText}>+ Add New</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -68,10 +86,16 @@ const ListScreen = () => {
 
 const styles = StyleSheet.create({
   container: {},
+  addContainer: {
+    zIndex: 20
+  },
   listContainer: {
     height: 700,
     paddingTop: 0,
-    alignItems: 'center',
+    paddingLeft: 36,
+    paddingRight: 20,
+    
+    
   },
   headingText: {
     fontSize: 28,
@@ -80,7 +104,7 @@ const styles = StyleSheet.create({
     color: '#2e64e5',
     textAlign: 'center',
     padding: 20,
-    paddingBottom: 10,
+    paddingBottom: 8,
   },
   buttonContainer: {
     height: 71,
@@ -88,7 +112,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: 5,
     paddingRight: 5,
+    paddingBottom: 20,
     alignItems: 'center',
+    justifyContent: 'center'
   },
   homeButton: {
     width: windowWidth / 2.1,
@@ -97,7 +123,7 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 3,
+    borderRadius: 10
   },
   addButton: {
     width: windowWidth / 2.1,
@@ -107,12 +133,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 8,
+    borderRadius: 10
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#ffffff',
-    fontFamily: 'Lato-Regular',
+    fontFamily: 'Roboto',
   },
 });
 
