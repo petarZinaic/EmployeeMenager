@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import {windowHeight, windowWidth} from '../utils/Dimensions';
 import {OpenScreenContext} from '../context/OpenScreenContext';
 import ListItem from '../components/ListItem';
 import AddScreen from "./AddScreen";
+
 
 
 const ListScreen = () => {
@@ -34,27 +35,32 @@ const ListScreen = () => {
       position: 'frontend',
       seniority: 'medior',
     },
-    {
-      id: 3,
-      name: 'Mirko Mirkovic',
-      age: 30,
-      position: 'backend',
-      seniority: 'senior',
-    },
-   
    
     
   ];
+
+  const collection = useState('');
 
   
 
   return (
     <View style={styles.container}>
-     
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          onPress={() => setIsListOpen(false)}
+          style={styles.homeButton}>
+          <Text style={styles.buttonText}>Home Page</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setIsListOpen(false)}
+          style={styles.addButton}>
+          <Text style={styles.buttonText}>+ Add New</Text>
+        </TouchableOpacity>
+      </View>
+        <Text style={styles.headingText}>Employee List</Text>
       
       
       <ScrollView contentContainerStyle={styles.listContainer}>
-        <Text style={styles.headingText}>Employee List</Text>
         {employees.map((employee, index) => {
           return (
             <ListItem
@@ -68,18 +74,7 @@ const ListScreen = () => {
         })}
       </ScrollView>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={() => setIsListOpen(false)}
-          style={styles.homeButton}>
-          <Text style={styles.buttonText}>Home Page</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => setIsListOpen(false)}
-          style={styles.addButton}>
-          <Text style={styles.buttonText}>+ Add New</Text>
-        </TouchableOpacity>
-      </View>
+     
     </View>
   );
 };
@@ -90,7 +85,7 @@ const styles = StyleSheet.create({
     zIndex: 20
   },
   listContainer: {
-    height: 700,
+    // height: 700,
     paddingTop: 0,
     paddingLeft: 36,
     paddingRight: 20,
@@ -102,12 +97,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Lato-Regular',
     color: '#2e64e5',
-    textAlign: 'center',
-    padding: 20,
+    // textAlign: 'center',
+    // padding: 20,
+    marginLeft: 40,
     paddingBottom: 8,
+
   },
   buttonContainer: {
-    height: 71,
+    height: 80,
     display: 'flex',
     flexDirection: 'row',
     paddingLeft: 5,
