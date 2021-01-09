@@ -9,6 +9,7 @@ import {
 import HomeScreen from './screens/HomeScreen';
 
 import LoginScreen from "./screens/LoginScreen";
+import SignUpScreen from "./screens/SignUpScreen";
 import Loading from "./components/Loading";
 import {OpenScreenContextProvider} from "./context/OpenScreenContext";
 
