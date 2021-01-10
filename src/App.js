@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
 import firebase from 'firebase';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
   componentDidMount() {
@@ -16,18 +17,16 @@ class App extends Component {
       appId: "1:678571542819:web:96b623c699851f7d9a2496",
       measurementId: "G-RZC2BSP041"
     };
+    if(!firebase.app.length) {
+      firebase.initializeApp(config);
 
-  firebase.initializeApp(config);
+    }
   }
 
   render() {
     return (
       <Provider store={createStore(reducers)}>
-        <View>
-          <Text>
-            Hello !
-          </Text>
-        </View>
+        <LoginForm />
       </Provider>
     )
   }
