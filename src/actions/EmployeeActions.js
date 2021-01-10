@@ -9,3 +9,7 @@ export const employeeUpdate = ({ prop, value }) => {
         payload: { prop, value } 
     };
 };
+
+export const employeeCreate = ({ name, age, position }) => {
+   console.log(name, age, position);
+}
