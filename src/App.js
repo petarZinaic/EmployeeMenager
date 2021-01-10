@@ -1,84 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import firebase  from "firebase";
-import {
-  StyleSheet,
-  View,
-  Text,
+import React, { Component }  from 'react';
+import { View, Text } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
+import firebase from 'firebase';
 
-} from 'react-native';
-import HomeScreen from './screens/HomeScreen';
+class App extends Component {
+  componentDidMount() {
+    const config = {
+      apiKey: "AIzaSyBh97DGahbhm9wX8Gb1rbIUlj75B9Xny38",
+      authDomain: "manager-75295.firebaseapp.com",
+      projectId: "manager-75295",
+      storageBucket: "manager-75295.appspot.com",
+      messagingSenderId: "678571542819",
+      appId: "1:678571542819:web:96b623c699851f7d9a2496",
+      measurementId: "G-RZC2BSP041"
+    };
 
-import LoginScreen from "./screens/LoginScreen";
-import SignUpScreen from "./screens/SignUpScreen";
-import Loading from "./components/Loading";
-import {OpenScreenContextProvider} from "./context/OpenScreenContext";
-
-
-
-
-const App = (props) => {
-
-const [isLoaded, setIsLoaded] = useState(null);
-
-useEffect(() => {
-  let firebaseConfig = {
-    apiKey: "AIzaSyCQBl6gmY1YjIw4vvLpd-2edWKq-3UxxXA",
-    authDomain: "employeemanager-88cc7.firebaseapp.com",
-    databaseURL: "https://employeemanager-88cc7-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "employeemanager-88cc7",
-    storageBucket: "employeemanager-88cc7.appspot.com",
-    messagingSenderId: "328138051772",
-    appId: "1:328138051772:web:28d0231daab082454580b9",
-    measurementId: "G-0EQV8KNHLW"
-  };
-  // Initialize Firebase
-  if(!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-
-    firebase.auth().onAuthStateChanged(user => {
-      if(user) {
-        setIsLoaded(true)
-      } else {
-        setIsLoaded(false)
-      }
-    })
-
-    firebase.database().ref()
-
-
+  firebase.initializeApp(config);
   }
-}, [])
 
-
-const renderContent = () => {
-  switch(isLoaded) {
-    case true:
-      return <HomeScreen />
-    case false:
-      return <LoginScreen />  
-
-      default: 
-      return <Loading />
+  render() {
+    return (
+      <Provider store={createStore(reducers)}>
+        <View>
+          <Text>
+            Hello !
+          </Text>
+        </View>
+      </Provider>
+    )
   }
 }
-
-  return (
-    <OpenScreenContextProvider>
-  {renderContent()}
-    </OpenScreenContextProvider>
-  );
-};
-
-const styles = StyleSheet.create({
- View: {
-   flex: 1,
-   alignItems: 'center',
-   justifyContent: 'center' 
- }, 
- text: {
-   color: 'red',
-   fontSize: 30
- }
-});
 
 export default App;
