@@ -22,7 +22,10 @@ class EmployeeList extends Component {
            </View>
        )
    } 
+
+ 
 }
+
 
 
 
