@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
  
 export default class ListItem extends Component {
-    onItemPress = () => Actions.employeeEdit({ employee: this.props.employee.item });
+    onItemPress = () => Actions.employeeCreate();
     render() {
         const { name } = this.props.employee.item;
  
