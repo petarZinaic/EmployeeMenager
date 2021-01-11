@@ -8,6 +8,7 @@ import ReduxThunk from 'redux-thunk';
 import LoginForm from './components/LoginForm';
 import Router from './Router';
 
+
 class App extends Component {
   componentDidMount() {
     const config = {
