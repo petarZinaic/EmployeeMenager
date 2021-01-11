@@ -4,12 +4,12 @@ import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
  
 export default class ListItem extends Component {
-    onItemPress = () => Actions.employeeEdit();
+    onRowPress = () => Actions.employeeEdit({ employee: this.props.employee });
     render() {
         const { name } = this.props.employee.item;
  
         return (
-            <TouchableWithoutFeedback onPress={this.onItemPress}>
+            <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
                 <View>
                     <CardSection>
                         <Text style={styles.titleStyle}>{name}</Text>
