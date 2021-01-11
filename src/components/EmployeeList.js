@@ -7,7 +7,9 @@ import { employeesFetch } from '../actions';
 
 class EmployeeList extends Component {
  
-
+    componentDidMount() {
+        this.props.employeesFetch();
+    }
 
    render() {
        console.log(this.props);
@@ -29,4 +31,4 @@ class EmployeeList extends Component {
 
 
 
-export default connect(null, { employeesFetch }) (EmployeeList);
+export default connect(null, { employeesFetch })(EmployeeList);
