@@ -13,6 +13,7 @@ class App extends Component {
     const config = {
       apiKey: 'AIzaSyBh97DGahbhm9wX8Gb1rbIUlj75B9Xny38',
       authDomain: 'manager-75295.firebaseapp.com',
+      databaseURL: "https://manager-75295-default-rtdb.europe-west1.firebasedatabase.app",
       projectId: 'manager-75295',
       storageBucket: 'manager-75295.appspot.com',
       messagingSenderId: '678571542819',
