@@ -1,8 +1,8 @@
 import React, { Component  } from 'react';
-import {Picker} from '@react-native-picker/picker';
 import { connect } from 'react-redux';
 import { employeeUpdate, employeeCreate } from '../actions';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Button } from './common';
+import EmployeeForm from './EmployeeForm';
 
 class EmployeeCreate extends Component { 
 
@@ -15,38 +15,8 @@ class EmployeeCreate extends Component {
     render() {
         return(
            <Card>
-              <CardSection>
-                  <Input 
-                  label="Name"
-                  placeholder="Enter Name"
-                  value={this.props.name}
-                  onChangeText={value =>this.props.employeeUpdate({ prop: 'name', value })}
-                  />
-              </CardSection>
-
-              <CardSection>              
-                  <Input 
-                  label="Age"
-                  placeholder="Enter Age"
-                  value={this.props.age}
-                  onChangeText={value => this.props.employeeUpdate({ prop: 'age', value  })}
-                  />
-              </CardSection>
-
-
-              <CardSection >
-         
-                  <Picker
-                  style={{ flex: 1 }}
-                  selectedValue={this.props.position}
-                  onValueChange={value => this.props.employeeUpdate({ prop: 'position', value })}
-                  >
-                      <Picker.Item label="Frontend" value="Frontend" />
-                      <Picker.Item label="Backend" value="Backend" />
-                      <Picker.Item label="Project Menager" value="Project Menager" />
-                  </Picker>
-              </CardSection>
-
+            
+            <EmployeeForm  {...this.props} />
 
               <CardSection>
                   <Button onPress={this.onButtonPress.bind(this)}>
@@ -59,12 +29,7 @@ class EmployeeCreate extends Component {
     }
 }
 
-const styles = {
-    pickerTextStyle: {
-        fontSize: 19,
-        paddingLeft: 20
-    }
-}
+
 
 const mapStateToProps = (state) => {
     const { name, age, position } = state.employeeForm;
