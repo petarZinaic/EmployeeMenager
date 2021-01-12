@@ -46,7 +46,7 @@ export const employeeSave = ({ name, age, position, uid }) => {
         .set({ name, age, position })
         .then(() => {
           dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
-          Actions.employeeList({ type: 'reset' });
+          Actions.pop();
         });
     };
   };
